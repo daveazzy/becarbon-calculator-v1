@@ -1,0 +1,24 @@
+
+/* Muda a cor de fundo da barra lateral */
+[data-testid="stSidebar"] {
+    background-color: #f0f2f6;
+}
+
+/* Customiza a fonte do título principal */
+h1 {
+    color: #0d3b66; /* Um azul mais escuro */
+    font-family: 'Garamond', serif;
+}
+
+/* Customiza a cor das abas */
+.stTabs [data-baseweb="tab-list"] button {
+    background-color: transparent;
+    color: #4f4f4f;
+}
+
+/* Customiza a cor da aba selecionada */
+.stTabs [data-baseweb="tab-list"] button[aria-selected="true"] {
+    background-color: #e0eafc;
+    color: #0d3b66;
+    font-weight: bold;
+}

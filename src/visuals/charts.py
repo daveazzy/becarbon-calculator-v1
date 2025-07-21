@@ -160,44 +160,48 @@ def create_radar_chart(segment_data: pd.Series) -> go.Figure:
         segment_data['growth_norm'] * 100,
         (1 - segment_data['age_norm']) * 100
     ]
-    radar_labels = ['Participação de Mercado', 'Tendência de Crescimento', 'Qualidade (Idade Recente)']
+    radar_labels = ['Participação<br>Mercado', 'Tendência<br>Crescimento', 'Qualidade<br>Recente']
 
     fig = go.Figure(data=[go.Scatterpolar(
         r=radar_values,
         theta=radar_labels,
         fill='toself',
         name='Perfil do Segmento',
-        line_color='#81ecec',  # Um azul/ciano moderno
-        fillcolor='rgba(130, 236, 236, 0.5)' # Versão transparente da cor da linha
+        line_color='#4a90a4',  # Azul mais suave e elegante
+        fillcolor='rgba(74, 144, 164, 0.2)', # Preenchimento mais sutil
+        line_width=2
     )])
 
     fig.update_layout(
         polar=dict(
+            bgcolor='rgba(40, 44, 52, 0.8)',  # Fundo escuro suave para o círculo do radar
             radialaxis=dict(
                 visible=True,
                 range=[0, 100],
-                gridcolor='rgba(255, 255, 255, 0.2)', # Linhas de grade mais sutis
-                linecolor='rgba(255, 255, 255, 0.5)', # Eixo radial mais claro
-                tickfont=dict(color='white')
+                gridcolor='rgba(255, 255, 255, 0.3)', # Linhas de grade brancas mais visíveis
+                linecolor='rgba(255, 255, 255, 0.5)', # Eixo radial branco mais visível
+                tickfont=dict(color='white', size=16) # Números em branco maiores
             ),
             angularaxis=dict(
-                linecolor='rgba(255, 255, 255, 0.5)', # Eixos angulares mais claros
-                tickfont=dict(color='white')
+                linecolor='rgba(255, 255, 255, 0.5)', # Eixos angulares brancos mais visíveis
+                tickfont=dict(color='white', size=12) # Labels menores para melhor responsividade
             )
         ),
         showlegend=False,
         height=350,
-        margin=dict(l=40, r=40, t=40, b=40),
+        margin=dict(l=80, r=80, t=60, b=60),
+        autosize=True,  # Permite redimensionamento automático
         title={
             'text': "Perfil de Alinhamento do Segmento",
-            'y':0.95,
+            'y':0.92,
             'x':0.5,
             'xanchor': 'center',
             'yanchor': 'top',
-            'font': dict(color='white') # Título em branco
+            'font': dict(color='white', size=18) # Título menor para responsividade
         },
         paper_bgcolor='rgba(0,0,0,0)',  # Fundo completamente transparente
-        plot_bgcolor='rgba(0,0,0,0)'   # Área do plot transparente
+        plot_bgcolor='rgba(0,0,0,0)',   # Área do plot transparente
+        font=dict(size=12)  # Fonte padrão menor para melhor adaptação
     )
 
     return fig
